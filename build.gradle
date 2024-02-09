@@ -4,11 +4,17 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.4'
 }
 
-group = 'org.flab.hyunsb'
-version = '0.0.1'
+allprojects {
+	group = 'org.flab.hyunsb'
+	version = '0.0.1'
 
-java {
-	sourceCompatibility = '17'
+	java {
+		sourceCompatibility = '17'
+	}
+
+	repositories {
+		mavenCentral()
+	}
 }
 
 configurations {
@@ -17,24 +23,50 @@ configurations {
 	}
 }
 
-repositories {
-	mavenCentral()
+subprojects {
+
+	apply plugin: 'java'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	dependencies {
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+	}
+
+	tasks.named('test') {
+		useJUnitPlatform()
+	}
+
+	bootJar.enabled = false
 }
 
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.mysql:mysql-connector-j'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+project(':used-trading-application') {
+	dependencies {
+		implementation project(':used-trading-domain')
+	}
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+project(':used-trading-bootstrap') {
+	bootJar.enabled = true
+	dependencies {
+		implementation project(':used-trading-domain')
+		implementation project(':used-trading-application')
+		implementation project(':used-trading-framework')
+	}
 }
 
-// plain archive 생성 해제
-tasks.named("jar") {
+project(':used-trading-framework') {
+	dependencies {
+		implementation project(':used-trading-domain')
+		implementation project(':used-trading-application')
+	}
+}
+
+jar {
+	enabled = false
+}
+
+bootJar {
 	enabled = false;
 }

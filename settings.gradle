@@ -1,1 +1,5 @@
 rootProject.name = 'used-trading-market'
+include 'used-trading-bootstrap'
+include 'used-trading-domain'
+include 'used-trading-application'
+include 'used-trading-framework'
