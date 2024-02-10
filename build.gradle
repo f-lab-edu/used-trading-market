@@ -49,6 +49,7 @@ project(':used-trading-application') {
 
 project(':used-trading-bootstrap') {
 	bootJar.enabled = true
+	jar.enabled = false
 	dependencies {
 		implementation project(':used-trading-domain')
 		implementation project(':used-trading-application')
@@ -68,5 +69,5 @@ jar {
 }
 
 bootJar {
-	enabled = false;
+	enabled = false
 }
