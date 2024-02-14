@@ -1,7 +1,6 @@
 package org.flab.hyunsb.bootstrap.rest.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.flab.hyunsb.domain.Product;
