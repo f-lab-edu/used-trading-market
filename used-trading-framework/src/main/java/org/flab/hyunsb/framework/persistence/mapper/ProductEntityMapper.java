@@ -8,18 +8,17 @@ import org.springframework.stereotype.Component;
 public class ProductEntityMapper {
 
     public Product toDomain(ProductEntity productEntity) {
-        return Product.builder()
-            .id(productEntity.getId())
-            .name(productEntity.getName())
-            .description(productEntity.getDescription())
-            .build();
+        return new Product(
+            productEntity.getId(),
+            productEntity.getName(),
+            productEntity.getDescription()
+        );
     }
 
     public ProductEntity from(Product product) {
-        return ProductEntity.builder()
-            .id(product.getId())
-            .name(product.getName())
-            .description(product.getDescription())
-            .build();
+        return new ProductEntity(
+            product.getName(),
+            product.getDescription()
+        );
     }
 }

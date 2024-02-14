@@ -20,10 +20,7 @@ public class ProductCreateRequest {
     private String description;
 
     public Product toEntity() {
-        return Product.builder()
-            .name(name)
-            .description(description)
-            .build();
+        return new Product(name, description);
     }
 }
 

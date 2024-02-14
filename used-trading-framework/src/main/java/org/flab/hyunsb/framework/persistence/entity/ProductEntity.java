@@ -5,11 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -23,4 +21,9 @@ public class ProductEntity {
     private String name;
 
     private String description;
+
+    public ProductEntity(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }
