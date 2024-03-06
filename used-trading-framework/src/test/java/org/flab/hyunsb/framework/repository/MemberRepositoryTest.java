@@ -1,4 +1,4 @@
-package org.flab.hyunsb.framework;
+package org.flab.hyunsb.framework.repository;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 
