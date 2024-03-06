@@ -6,6 +6,7 @@ build/
 .yml
 .properties
 .gradle
+docs
 
 ### STS ###
 .apt_generated
