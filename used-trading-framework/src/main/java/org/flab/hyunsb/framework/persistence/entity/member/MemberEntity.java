@@ -11,6 +11,8 @@ import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.flab.hyunsb.domain.member.Member;
+import org.flab.hyunsb.domain.member.MemberForCreate;
 import org.flab.hyunsb.framework.persistence.entity.basetime.BaseTimeEntity;
 import org.flab.hyunsb.framework.persistence.entity.region.RegionEntity;
 import org.hibernate.annotations.DynamicUpdate;
@@ -39,4 +41,18 @@ public class MemberEntity extends BaseTimeEntity {
 
     @Column(nullable = false)
     private String nickname;
+
+    public Member toDomain() {
+        return new Member(id, region.getId(), email, password, nickname);
+    }
+
+    public static MemberEntity from(MemberForCreate member) {
+        return new MemberEntity(
+            null,
+            RegionEntity.valueOf(member.getRegionId()),
+            member.getEmail(),
+            member.getPassword(),
+            member.getNickname()
+        );
+    }
 }
