@@ -9,9 +9,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.flab.hyunsb.domain.region.Region;
 import org.flab.hyunsb.framework.persistence.entity.basetime.BaseTimeEntity;
 
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "region")
@@ -33,4 +35,12 @@ public class RegionEntity extends BaseTimeEntity {
 
     @Column(nullable = false)
     private Double lng;
+
+    public static RegionEntity valueOf(Long regionId) {
+        return RegionEntity.builder().id(regionId).build();
+    }
+
+    public Region toDomain() {
+        return new Region(id, sido, sigungu, lat, lng);
+    }
 }
