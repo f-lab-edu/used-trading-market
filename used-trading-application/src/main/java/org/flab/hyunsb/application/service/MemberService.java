@@ -1,7 +1,7 @@
 package org.flab.hyunsb.application.service;
 
 import lombok.RequiredArgsConstructor;
-import org.flab.hyunsb.application.encryptor.Encryptor;
+import org.flab.hyunsb.domain.Encryptor.Encryptor;
 import org.flab.hyunsb.application.exception.MemberEmailDuplicatedException;
 import org.flab.hyunsb.application.output.MemberOutputPort;
 import org.flab.hyunsb.application.usecase.member.CreateMemberUseCase;
@@ -19,7 +19,7 @@ public class MemberService implements CreateMemberUseCase {
     private final ValidateRegionUseCase validateRegionUseCase;
 
     @Override
-    public Member createMember(MemberForCreate memberForCreate) {
+    public Member createMember(final MemberForCreate memberForCreate) {
         validateRegionUseCase.validateRegionId(memberForCreate.getRegionId());
         validateEmailDuplication(memberForCreate.getEmail());
 
@@ -35,7 +35,6 @@ public class MemberService implements CreateMemberUseCase {
     }
 
     private void setEncryptedPassword(MemberForCreate memberForCreate) {
-        String encryptedPassword = passwordEncryptor.encrypt(memberForCreate.getPassword());
-        memberForCreate.setEncryptedPassword(encryptedPassword);
+        memberForCreate.encryptPassword(passwordEncryptor);
     }
 }

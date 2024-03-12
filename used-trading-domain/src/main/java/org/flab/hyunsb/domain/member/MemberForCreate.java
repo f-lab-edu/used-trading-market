@@ -2,6 +2,7 @@ package org.flab.hyunsb.domain.member;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.flab.hyunsb.domain.Encryptor.Encryptor;
 
 @Getter
 @AllArgsConstructor
@@ -12,7 +13,7 @@ public class MemberForCreate {
     private String password;
     private String nickname;
 
-    public void setEncryptedPassword(String encryptedPassword) {
-        password = encryptedPassword;
+    public void encryptPassword(Encryptor encryptor) {
+        password = encryptor.encrypt(password);
     }
 }

@@ -1,6 +1,6 @@
 package org.flab.hyunsb.application.service.member.mock;
 
-import org.flab.hyunsb.application.encryptor.Encryptor;
+import org.flab.hyunsb.domain.Encryptor.Encryptor;
 
 public class MockPasswordEncryptor implements Encryptor {
 

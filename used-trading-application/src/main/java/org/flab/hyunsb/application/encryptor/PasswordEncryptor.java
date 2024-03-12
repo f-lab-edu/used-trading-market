@@ -2,6 +2,7 @@ package org.flab.hyunsb.application.encryptor;
 
 import java.security.MessageDigest;
 import lombok.RequiredArgsConstructor;
+import org.flab.hyunsb.domain.Encryptor.Encryptor;
 import org.springframework.stereotype.Component;
 
 @Component

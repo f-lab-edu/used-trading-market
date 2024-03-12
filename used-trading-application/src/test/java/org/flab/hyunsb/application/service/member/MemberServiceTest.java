@@ -2,7 +2,7 @@ package org.flab.hyunsb.application.service.member;
 
 import static org.assertj.core.api.Assertions.*;
 
-import org.flab.hyunsb.application.encryptor.Encryptor;
+import org.flab.hyunsb.domain.Encryptor.Encryptor;
 import org.flab.hyunsb.application.exception.MemberEmailDuplicatedException;
 import org.flab.hyunsb.application.exception.RegionInvalidException;
 import org.flab.hyunsb.application.exception.message.MemberErrorMessage;
