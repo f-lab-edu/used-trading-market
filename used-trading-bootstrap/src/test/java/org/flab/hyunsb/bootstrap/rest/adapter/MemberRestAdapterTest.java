@@ -46,7 +46,7 @@ class MemberRestAdapterTest extends AbstractRestDocsTests {
         when(createMemberUseCase.createMember(any(MemberForCreate.class)))
             .then(invocation -> {
                 MemberForCreate m = invocation.getArgument(0);
-                return new Member(1L, m.getRegionId(), m.getEmail(), m.getPassword(), m.getNickname());
+                return new Member(1L, m.regionId(), m.email(), m.password(), m.nickname());
             });
 
         // When & Then

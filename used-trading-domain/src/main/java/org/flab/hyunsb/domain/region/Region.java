@@ -1,15 +1,5 @@
 package org.flab.hyunsb.domain.region;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+public record Region(Long regionId, String sido, String sigungu, Double lat, Double lng) {
 
-@Getter
-@AllArgsConstructor
-public class Region {
-
-    private final Long regionId;
-    private final String sido;
-    private final String sigungu;
-    private final Double lat;
-    private final Double lng;
 }

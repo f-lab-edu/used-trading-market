@@ -3,7 +3,6 @@ package org.flab.hyunsb.application.service.member.mock;
 import java.util.Optional;
 import org.flab.hyunsb.application.output.MemberOutputPort;
 import org.flab.hyunsb.domain.member.Member;
-import org.flab.hyunsb.domain.member.MemberForCreate;
 
 public class MockMemberOutputPort implements MemberOutputPort {
 
@@ -18,13 +17,8 @@ public class MockMemberOutputPort implements MemberOutputPort {
     }
 
     @Override
-    public Member saveMember(MemberForCreate memberForCreate) {
-        return new Member(
-            1L,
-            memberForCreate.getRegionId(),
-            memberForCreate.getEmail(),
-            memberForCreate.getPassword(),
-            memberForCreate.getNickname());
+    public Member saveMember(Member member) {
+        return member;
     }
 
     @Override

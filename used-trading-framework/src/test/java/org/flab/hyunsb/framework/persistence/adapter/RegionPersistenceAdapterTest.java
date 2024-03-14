@@ -1,7 +1,5 @@
 package org.flab.hyunsb.framework.persistence.adapter;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Optional;
 import org.flab.hyunsb.domain.region.Region;
 import org.flab.hyunsb.framework.persistence.entity.region.RegionEntity;
@@ -37,7 +35,7 @@ class RegionPersistenceAdapterTest {
         // Then
         Assertions.assertAll(
             () -> Assertions.assertTrue(optionalRegion.isPresent()),
-            () -> Assertions.assertEquals(regionId, optionalRegion.get().getRegionId())
+            () -> Assertions.assertEquals(regionId, optionalRegion.get().regionId())
         );
     }
 

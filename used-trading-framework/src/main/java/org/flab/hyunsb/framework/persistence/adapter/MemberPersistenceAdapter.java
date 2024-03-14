@@ -4,7 +4,6 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.flab.hyunsb.application.output.MemberOutputPort;
 import org.flab.hyunsb.domain.member.Member;
-import org.flab.hyunsb.domain.member.MemberForCreate;
 import org.flab.hyunsb.framework.persistence.entity.member.MemberEntity;
 import org.flab.hyunsb.framework.persistence.repository.MemberRepository;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,5 @@
-package org.flab.hyunsb.application.encryptor;
+package org.flab.hyunsb.domain.member.encryptor;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,9 +11,8 @@ class PasswordEncryptorTest {
     private PasswordEncryptor passwordEncryptor;
 
     @BeforeEach
-    void setUp() throws NoSuchAlgorithmException {
-        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-        passwordEncryptor = new PasswordEncryptor(messageDigest);
+    void setUp() {
+        passwordEncryptor = PasswordEncryptor.getInstance();
     }
 
     @ParameterizedTest

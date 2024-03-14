@@ -1,8 +1,7 @@
 package org.flab.hyunsb.application.service.member;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.flab.hyunsb.domain.Encryptor.Encryptor;
 import org.flab.hyunsb.application.exception.MemberEmailDuplicatedException;
 import org.flab.hyunsb.application.exception.RegionInvalidException;
 import org.flab.hyunsb.application.exception.message.MemberErrorMessage;
@@ -10,7 +9,6 @@ import org.flab.hyunsb.application.exception.message.RegionErrorMessage;
 import org.flab.hyunsb.application.output.MemberOutputPort;
 import org.flab.hyunsb.application.service.MemberService;
 import org.flab.hyunsb.application.service.member.mock.MockMemberOutputPort;
-import org.flab.hyunsb.application.service.member.mock.MockPasswordEncryptor;
 import org.flab.hyunsb.application.service.member.mock.MockValidateRegionUseCase;
 import org.flab.hyunsb.application.usecase.region.ValidateRegionUseCase;
 import org.flab.hyunsb.domain.member.Member;
@@ -24,7 +22,6 @@ import org.junit.jupiter.api.Test;
 class MemberServiceTest {
 
     private static final String DUPLICATION_EMAIL = "duplication Email";
-    private static final String ENCRYPT_PREFIX = "encrypted ";
     private static final Long INVALID_REGION_ID = 0L;
 
     private MemberService memberService;
@@ -35,11 +32,10 @@ class MemberServiceTest {
     }
 
     private static MemberService generateTestMemberService() {
-        Encryptor mockEncryptor = new MockPasswordEncryptor(ENCRYPT_PREFIX);
         MemberOutputPort mockMemberOutputPort = new MockMemberOutputPort(DUPLICATION_EMAIL);
         ValidateRegionUseCase validateRegionUseCase = new MockValidateRegionUseCase(INVALID_REGION_ID);
 
-        return new MemberService(mockMemberOutputPort, mockEncryptor, validateRegionUseCase);
+        return new MemberService(mockMemberOutputPort, validateRegionUseCase);
     }
 
     @Nested
@@ -65,8 +61,7 @@ class MemberServiceTest {
                 () -> Assertions.assertEquals(regionId, actualMember.regionId()),
                 () -> Assertions.assertEquals(email, actualMember.email()),
                 () -> Assertions.assertEquals(nickname, actualMember.nickname()),
-                () -> Assertions.assertNotEquals(password, actualMember.password()),
-                () -> Assertions.assertEquals(ENCRYPT_PREFIX + password, actualMember.password())
+                () -> Assertions.assertNotEquals(password, actualMember.password())
             );
         }
 
