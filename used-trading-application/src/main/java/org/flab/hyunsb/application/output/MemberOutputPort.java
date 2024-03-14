@@ -6,7 +6,7 @@ import org.flab.hyunsb.domain.member.MemberForCreate;
 
 public interface MemberOutputPort {
 
-    Member saveMember(MemberForCreate memberForCreate);
+    Member saveMember(Member member);
 
     Optional<Member> findByEmail(String email);
 }

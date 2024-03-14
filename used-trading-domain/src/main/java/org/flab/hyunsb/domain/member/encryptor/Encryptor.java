@@ -1,4 +1,4 @@
-package org.flab.hyunsb.domain.Encryptor;
+package org.flab.hyunsb.domain.member.encryptor;
 
 public interface Encryptor {
 

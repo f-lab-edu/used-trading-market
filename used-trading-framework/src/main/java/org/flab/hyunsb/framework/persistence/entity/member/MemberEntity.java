@@ -46,13 +46,13 @@ public class MemberEntity extends BaseTimeEntity {
         return new Member(id, region.getId(), email, password, nickname);
     }
 
-    public static MemberEntity from(MemberForCreate member) {
+    public static MemberEntity from(Member member) {
         return new MemberEntity(
-            null,
-            RegionEntity.valueOf(member.getRegionId()),
-            member.getEmail(),
-            member.getPassword(),
-            member.getNickname()
+            member.id(),
+            RegionEntity.valueOf(member.regionId()),
+            member.email(),
+            member.password(),
+            member.nickname()
         );
     }
 }

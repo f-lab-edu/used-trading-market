@@ -16,8 +16,8 @@ public class MemberPersistenceAdapter implements MemberOutputPort {
     private final MemberRepository memberRepository;
 
     @Override
-    public Member saveMember(MemberForCreate memberForCreate) {
-        MemberEntity memberEntity = MemberEntity.from(memberForCreate);
+    public Member saveMember(Member member) {
+        MemberEntity memberEntity = MemberEntity.from(member);
         memberEntity = memberRepository.save(memberEntity);
 
         return memberEntity.toDomain();
