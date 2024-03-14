@@ -9,8 +9,8 @@ import org.flab.hyunsb.application.exception.message.RegionErrorMessage;
 import org.flab.hyunsb.application.output.MemberOutputPort;
 import org.flab.hyunsb.application.service.MemberService;
 import org.flab.hyunsb.application.service.member.mock.MockMemberOutputPort;
-import org.flab.hyunsb.application.service.member.mock.MockValidateRegionUseCase;
-import org.flab.hyunsb.application.usecase.region.ValidateRegionUseCase;
+import org.flab.hyunsb.application.service.member.mock.MockRegionValidator;
+import org.flab.hyunsb.application.validator.RegionValidator;
 import org.flab.hyunsb.domain.member.Member;
 import org.flab.hyunsb.domain.member.MemberForCreate;
 import org.junit.jupiter.api.Assertions;
@@ -33,9 +33,9 @@ class MemberServiceTest {
 
     private static MemberService generateTestMemberService() {
         MemberOutputPort mockMemberOutputPort = new MockMemberOutputPort(DUPLICATION_EMAIL);
-        ValidateRegionUseCase validateRegionUseCase = new MockValidateRegionUseCase(INVALID_REGION_ID);
+        RegionValidator regionValidator = new MockRegionValidator(INVALID_REGION_ID);
 
-        return new MemberService(mockMemberOutputPort, validateRegionUseCase);
+        return new MemberService(mockMemberOutputPort, regionValidator);
     }
 
     @Nested
