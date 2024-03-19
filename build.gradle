@@ -52,6 +52,17 @@ subprojects {
 			csv.required = false;
 			html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
 		}
+
+		afterEvaluate {
+
+			classDirectories.setFrom(files(classDirectories.files.collect {
+				fileTree(dir: it, excludes: [
+						"**/config/*",
+						"**/entity/*",
+						"**/UsedTradingApplication.class"])
+			}))
+		}
+
 		finalizedBy 'jacocoTestCoverageVerification'
 	}
 
@@ -72,6 +83,8 @@ subprojects {
 					value = 'COVEREDRATIO'
 					minimum = 0.80
 				}
+
+				excludes = ["*.*Config", "*.*Entity", "*.UsedTradingApplication"]
 			}
 		}
 	}
