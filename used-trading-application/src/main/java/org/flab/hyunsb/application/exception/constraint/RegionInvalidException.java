@@ -1,4 +1,4 @@
-package org.flab.hyunsb.application.exception;
+package org.flab.hyunsb.application.exception.constraint;
 
 import org.flab.hyunsb.application.exception.message.RegionErrorMessage;
 
