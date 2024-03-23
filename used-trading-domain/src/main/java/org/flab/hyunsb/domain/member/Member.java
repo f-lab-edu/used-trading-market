@@ -20,4 +20,9 @@ public record Member(Long id, Long regionId, String email, String password, Stri
     private static String encryptPassword(String password) {
         return ENCRYPTOR.encrypt(password);
     }
+
+    public boolean isMatchingPassword(String password) {
+        String encryptedPassword = encryptPassword(password);
+        return this.password.equals(encryptedPassword);
+    }
 }
