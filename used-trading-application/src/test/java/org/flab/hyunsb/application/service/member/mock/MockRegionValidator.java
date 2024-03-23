@@ -1,6 +1,6 @@
 package org.flab.hyunsb.application.service.member.mock;
 
-import org.flab.hyunsb.application.exception.RegionInvalidException;
+import org.flab.hyunsb.application.exception.constraint.RegionInvalidException;
 import org.flab.hyunsb.application.validator.RegionValidator;
 
 public class MockRegionValidator implements RegionValidator {
