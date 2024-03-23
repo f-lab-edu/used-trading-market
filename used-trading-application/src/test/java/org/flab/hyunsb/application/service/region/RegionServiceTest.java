@@ -2,7 +2,7 @@ package org.flab.hyunsb.application.service.region;
 
 import static org.assertj.core.api.Assertions.*;
 
-import org.flab.hyunsb.application.exception.RegionInvalidException;
+import org.flab.hyunsb.application.exception.constraint.RegionInvalidException;
 import org.flab.hyunsb.application.exception.message.RegionErrorMessage;
 import org.flab.hyunsb.application.output.RegionOutputPort;
 import org.flab.hyunsb.application.service.RegionService;
