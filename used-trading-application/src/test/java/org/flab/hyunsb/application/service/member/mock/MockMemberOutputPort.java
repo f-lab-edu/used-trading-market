@@ -6,13 +6,11 @@ import org.flab.hyunsb.domain.member.Member;
 
 public class MockMemberOutputPort implements MemberOutputPort {
 
-    private static final Member MOCK_MEMBER = new Member(
-        1L, 1L, "email", "password", "nickname"
-    );
-
+    private final Member mockMember;
     private final String duplication_email;
 
-    public MockMemberOutputPort(String duplicationEmail) {
+    public MockMemberOutputPort(Member mockMember, String duplicationEmail) {
+        this.mockMember = mockMember;
         duplication_email = duplicationEmail;
     }
 
@@ -23,8 +21,8 @@ public class MockMemberOutputPort implements MemberOutputPort {
 
     @Override
     public Optional<Member> findByEmail(String email) {
-        if (duplication_email.equals(email)) {
-            return Optional.of(MOCK_MEMBER);
+        if (duplication_email.equals(email) || mockMember.email().equals(email)) {
+            return Optional.of(mockMember);
         }
         return Optional.empty();
     }
